@@ -6,7 +6,7 @@ http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartpho
 
 Project Files:
 
-* CodeBook.html: Describes the variables and operations to clean and generate tidy data. Read this file first.
+* CodeBook.md: Describes the variables and operations to clean and generate tidy data. Read this file first.
 * run_analysis.R: Downloads the compressed file with the data for the project and unzips it and makes the transformations to clean and generate tidy data for analysis.
 * Course3_Tidy_Data.txt: Contains the tidy data generated after run the indicated scripts. The exported file is in txt format.
 
