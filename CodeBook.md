@@ -130,39 +130,39 @@ Later, We uses descriptive activity names to name the activities in the data set
 
 Finally, We made the Tidy_Info column names more readable, changing strings with gsub() and regular expresions:
 
-"Acc""          = "Accelerometer"
+        "Acc""          = "Accelerometer"
 
-"BodyBody"      = "Body"
+        "BodyBody"      = "Body"
 
-"Gyro"          = "Gyroscope"
+        "Gyro"          = "Gyroscope"
 
-"tBody"         = "TimeBody"
+        "tBody"         = "TimeBody"
 
-"Mag"           = "Magnitude"
+        "Mag"           = "Magnitude"
 
-"-mean()"       = "Mean"
+        "-mean()"       = "Mean"
 
-"-std()"        = "Std"
+        "-std()"        = "Std"
 
-"-freq()"       = "Frequency"
+        "-freq()"       = "Frequency"
 
 Replace t and f at the beginning:
 
-"^t"            = "Time"
+        "^t"            = "Time"
 
-"^f"            ="Frequency"
+        "^f"            ="Frequency"
 
 Eliminate the ellipsis (... or .. or . at the end):
 
-"\\.\\.\\."     = "\\."
+        "\\.\\.\\."     = "\\."
 
-"\\.\\."        = ""
+        "\\.\\."        = ""
 
-"[\\.]$"        = ""
+        "[\\.]$"        = ""
 
 
 # FINAL RESULT:
 
 We create a new data frame called Calculated_Mean calculating the mean by volunteer (subject) and activity and export the result to the Course3_Tidy_Data.txt or Course3_Tidy_data.csv file. 
 
-Total: 180 rows x 88 columns.
+        Total: 180 rows x 88 columns.
