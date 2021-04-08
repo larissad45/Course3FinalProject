@@ -1,13 +1,16 @@
 # DATA SOURCE: 
-Human Activity Recognition Using Smartphones Data Set.
+## Human Activity Recognition Using Smartphones Data Set.
 
 The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, they captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 30% of the volunteers was selected for generating the test data and 70% the training data.
 
 # VARIABLES:
 
-features <- Contains the "UCI HAR Dataset/features.txt" data set. The features selected for this variable come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ.
+## features <- Contains the "UCI HAR Dataset/features.txt" data set. 
+The features selected for this variable come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ.
+
         Columns:        "Id": Identifies the function observed.
                         "featurename": Describes the function name.
+                        
         Example:
         Id       featurename
         1 tBodyAcc-mean()-X
@@ -19,7 +22,8 @@ features <- Contains the "UCI HAR Dataset/features.txt" data set. The features s
         
         Total: 561 obs. of  2 columns
                         
-activity_labels <- Contains the "UCI HAR Dataset/activity_labels.txt" data set.
+## activity_labels <- Contains the "UCI HAR Dataset/activity_labels.txt" data set.
+
         Columns:        "Id": Identifies the activity of the subject.
                         "activityname": Describes the activity name.
         Example:
@@ -32,14 +36,16 @@ activity_labels <- Contains the "UCI HAR Dataset/activity_labels.txt" data set.
         
         Total: 6 obs. of  2 columns
         
-subject_test <- Contains the "UCI HAR Dataset/test/subject_test.txt" data set.
+## subject_test <- Contains the "UCI HAR Dataset/test/subject_test.txt" data set.
+
         Columns:        "Subject_Id": Identifies the volunteers observed in test data.
         Example: Shows 9/30 subjects
         2  4  9 10 12 13 18 20 24
         
         Total: 2947 obs. of  1 column
 
-x_test <- Contains the "UCI HAR Dataset/test/X_test.txt" data set.
+## x_test <- Contains the "UCI HAR Dataset/test/X_test.txt" data set.
+      
         Columns: Contains test data recorded for 561 columns corresponding to the features$featurename.
         Example:
         tBodyAcc.mean...X                   : num  0.257 0.286 0.275 0.27 0.275 ...
@@ -56,20 +62,23 @@ x_test <- Contains the "UCI HAR Dataset/test/X_test.txt" data set.
         
         Total: 2947 obs. of  561 columns
         
-y_test <- Contains the "UCI HAR Dataset/test/y_test.txt" data set.
+## y_test <- Contains the "UCI HAR Dataset/test/y_test.txt" data set.
+   
         Columns:        Id": Represents the activity of the subject observed in test data.
         Example: Id: int  5 5 5 5 5 5 5 5 5 5 ...
         
         Total: 2947 obs. of  1 column
         
-subject_train <- Contains the "UCI HAR Dataset/train/subject_train.txt" data set.
+## subject_train <- Contains the "UCI HAR Dataset/train/subject_train.txt" data set.
+
         Columns:        "Subject_Id": Identifies the volunteers observed in train data.
         Example: Shows 21/30 subjects
         1  3  5  6  7  8 11 14 15 16 17 19 21 22 23 25 26 27 28 29 30
         
         Total: 2947 obs. of  1 column
 
-x_train <- Contains the "UCI HAR Dataset/train/X_train.txt" data set.
+## x_train <- Contains the "UCI HAR Dataset/train/X_train.txt" data set.
+   
         Columns: Contains train data recorded for 561 columns corresponding to the features$featurename.
         Example:
         tBodyAcc.mean...X                   : num  0.289 0.278 0.28 0.279 0.277 ...
@@ -86,7 +95,8 @@ x_train <- Contains the "UCI HAR Dataset/train/X_train.txt" data set.
  
         Total: 7352 obs. of  561 columns
         
-y_train <- Contains the "UCI HAR Dataset/train/y_train.txt" data set.
+## y_train <- Contains the "UCI HAR Dataset/train/y_train.txt" data set.
+   
         Columns:        Id": Represents the activity of the subject observed in train data.
         Example: Id: int  5 5 5 5 5 5 5 5 5 5 ...
 
@@ -97,42 +107,62 @@ y_train <- Contains the "UCI HAR Dataset/train/y_train.txt" data set.
 We need to combine the data in one data set, using rbind().
 
 x <- Combines training (x_train) and test (x_test) data for the 561 feature columns.
+   
         Total: 10299 obs. of  561 columns
         
 y <- Combines training (y_train) and test (y_test) data for the activities observed.
+   
         Total: 10299 obs. of  1 column 
 
 Subject <- Combines the subjects observed for train (subject_train) and test (subject_test) data.
+   
         Total: 10299 obs. of  1 column 
 
 Next, We combined the data for the subjects (Subjects), activities (y) and features (x), using cbind(), in the variable Combined_Data.
+   
         Total: 10299 obs. of  563 columns
         
 Then, We extract only the measurements on the mean and standard deviation for each subject and activity, selecting the Subject_Id, Id, and featurename that contains("mean") or contains("std") and their values; subsetting Combined_Data. We stored the result in Tidy_Info. 
+   
         Total: 10299 obs. of  88 columns
         
 Later, We uses descriptive activity names to name the activities in the data set Tidy_Info and change de column name from Id to Activity.
 
 Finally, We made the Tidy_Info column names more readable, changing strings with gsub() and regular expresions:
+
 "Acc""          = "Accelerometer"
+
 "BodyBody"      = "Body"
+
 "Gyro"          = "Gyroscope"
+
 "tBody"         = "TimeBody"
+
 "Mag"           = "Magnitude"
+
 "-mean()"       = "Mean"
+
 "-std()"        = "Std"
+
 "-freq()"       = "Frequency"
 
 Replace t and f at the beginning:
+
 "^t"            = "Time"
+
 "^f"            ="Frequency"
 
 Eliminate the ellipsis (... or .. or . at the end):
+
 "\\.\\.\\."     = "\\."
+
 "\\.\\."        = ""
+
 "[\\.]$"        = ""
 
 
 # FINAL RESULT:
 
-We create a new data frame called Calculated_Mean calculating the mean by volunteer (subject) and activity and export the result to the Course3_Tidy_Data.txt or Course3_Tidy_data.csv file. Total: 180 rows x 88 columns.
+We create a new data frame called Calculated_Mean calculating the mean by volunteer (subject) and activity and export the result to the Course3_Tidy_Data.txt or Course3_Tidy_data.csv file. 
+
+Total: 180 rows x 88 columns.
